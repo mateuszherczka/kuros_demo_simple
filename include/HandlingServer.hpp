@@ -13,7 +13,7 @@ class HandlingServer : public Server
         Handles incoming messages from robot.
         We have access to response object in server.
         */
-        void handleResponse() override;
+        void handleResponse(const KukaResponse &response) override;
         void handleDisconnect() override;
 
     protected:

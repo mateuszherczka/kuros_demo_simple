@@ -10,7 +10,7 @@ HandlingServer::~HandlingServer()
     //dtor
 }
 
-void HandlingServer::handleResponse()
+void HandlingServer::handleResponse(const KukaResponse &response)
 {
 
     cout << "------------------------------------------------" << endl;

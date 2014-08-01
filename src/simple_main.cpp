@@ -48,10 +48,16 @@ int main()
     dataFile.loadSDFrames(filename, trajectory);  // store file contents in trajectory vector
 
     /*
-    *****IMPORTANT***** trajectory vector size is used as framecount
+    *****IMPORTANT*****
+    Trajectory vector size is used as framecount
     inside the robot, make sure all frames are valid!
     Otherwise robot behaviour will be undefined.
     */
+    if (trajectory.empty())
+    {
+        cerr << "Failed loading trajectory, bailing out!" << endl;
+        return 0;
+    }
 
     // set parameters for trajectory
     info_vec info(KUKA_INFO_SIZE,1);  // info vector, init all values to 1
@@ -103,7 +109,7 @@ int main()
 
     // send it, reusing the info vector we already made
     info[KUKA_TRAJID] = 667;
-    aserver.sendTrajectory(info, trajectory);
+    aserver.sendTrajectory(info, pointSampleTrajectory);
 
     // lets do the same but send each frame as a separate pose
     // these points won't be interpolated
@@ -142,8 +148,8 @@ int main()
     }
 
     // we sent Run == 0 so robot exits when done, server disconencts and we quit.
+    boost::this_thread::sleep( boost::posix_time::milliseconds(1000));
     cout << "Done, exiting." << endl;
     return 0;
 }
-
 
