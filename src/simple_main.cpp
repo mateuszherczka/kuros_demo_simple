@@ -142,7 +142,7 @@ int main()
     cout << "Idle." << endl;
 
     // idle
-    while( aserver.isConnected() ) {
+    while( aserver.isAccepting() ) {
 
         boost::this_thread::sleep( boost::posix_time::milliseconds(100));   // idle
     }

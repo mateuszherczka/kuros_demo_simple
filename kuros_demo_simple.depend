@@ -20,23 +20,23 @@
 	<vector>
 	<iostream>
 
-1406899253 /home/mh/dev/kuros/include/Server.hpp
+1407327357 /home/mh/dev/kuros/include/Server.hpp
 	<iostream>
 	<istream>
 	<ostream>
 	<string>
+	<mutex>
+	<atomic>
+	<thread>
 	<boost/asio.hpp>
 	<boost/thread.hpp>
-	<boost/thread/mutex.hpp>
-	<boost/thread/locks.hpp>
-	<boost/thread/lock_guard.hpp>
 	<ThreadSafeQueue.hpp>
 	<types.hpp>
 	<ServerConfig.hpp>
 	<KukaResponse.hpp>
 	<KukaCommand.hpp>
 
-1406896371 /home/mh/dev/kuros/include/ThreadSafeQueue.hpp
+1407253309 /home/mh/dev/kuros/include/ThreadSafeQueue.hpp
 	<mutex>
 	<condition_variable>
 	<queue>
@@ -79,7 +79,7 @@
 	<boost/asio.hpp>
 	<boost/lexical_cast.hpp>
 
-1406896786 source:/home/mh/dev/kuros_demo_simple/src/simple_main.cpp
+1407328048 source:/home/mh/dev/kuros_demo_simple/src/simple_main.cpp
 	<iostream>
 	<boost/format.hpp>
 	<kuros.h>
@@ -96,7 +96,8 @@
 	<constants.hpp>
 	<types.hpp>
 
-1406901816 /home/mh/dev/kuros/include/BlockingServer.hpp
+1407244728 /home/mh/dev/kuros/include/BlockingServer.hpp
 	<Server.hpp>
 	<boost/thread.hpp>
+	<mutex>
 
