@@ -60,7 +60,7 @@ int main()
     }
 
     // set parameters for trajectory
-    info_vec info(KUKA_INFO_SIZE,1);  // info vector, init all values to 1
+    info_vec info(KUKA_INFO_SIZE);  // info vectorwith the right size
 
     /*
     Response modes:
@@ -68,13 +68,13 @@ int main()
     1   robot sends a response when done with BCO, about to run a trajectory, done with a trajectory, exiting
     3   mode 1 + stream of responses every N ms all the time
     */
-    info[KUKA_RMODE]        = 1;    // response mode
-    info[KUKA_RMS]          = 100;  // [ms] response stream interval
-    info[KUKA_TRAJID]       = 666;  // a trajectory id
-    info[KUKA_RUN]          = 1;    // 0 == robot exits after trajectory, 1 == robot keeps running
-    info[KUKA_VEL]          = 200;  // [mm/sec], comfortable vel = 200
-    info[KUKA_TOL]          = 20;   // [mm], max approximation distance from trajectory point
-    info[KUKA_FRAMETYPE]    = 1;    // 1 == cartesian X Y Z Y P R, 2 == joint A1 A2 A3 A4 A5 A6 (not yet supported)
+    info[KUKA_RMODE]        = KUKA_RMODE_BASIC;     // response mode
+    info[KUKA_RMS]          = 100;                  // [ms] response stream interval
+    info[KUKA_TRAJID]       = 666;                  // a trajectory id
+    info[KUKA_RUN]          = YES;                  // 0 == robot exits after trajectory, 1 == robot keeps running
+    info[KUKA_VEL]          = 200;                  // [mm/sec], comfortable vel = 200
+    info[KUKA_TOL]          = 20;                   // [mm], max approximation distance from trajectory point
+    info[KUKA_FRAMETYPE]    = KUKA_CARTESIAN;       // 1 == cartesian X Y Z Y P R, 2 == joint A1 A2 A3 A4 A5 A6 (not yet supported)
 
     cout << "Have " << trajectory.size() << " frames to send, starting server." << endl;
 
@@ -89,7 +89,7 @@ int main()
     before sending, but here we just wait a little.
     */
     cout << "Waiting a little." << endl;
-    boost::this_thread::sleep( boost::posix_time::milliseconds(1000));
+    std::this_thread::sleep_for( std::chrono::milliseconds(1000) );
 
     cout << "Sending trajectory with " << trajectory.size() << " frames." << endl;
 
@@ -135,7 +135,7 @@ int main()
 
     pose[0] = trajectory.back();
     info[KUKA_TRAJID] = 672;
-    info[KUKA_RUN] = 0; // for the last trajectory we send Run = 0, robot will exit
+    info[KUKA_RUN] = NO; // for the last trajectory we send Run = 0, robot will exit
     aserver.sendTrajectory(info, pose);
 
 
@@ -144,11 +144,11 @@ int main()
     // idle
     while( aserver.isAccepting() ) {
 
-        boost::this_thread::sleep( boost::posix_time::milliseconds(100));   // idle
+        std::this_thread::sleep_for( std::chrono::milliseconds(100) );   // idle
     }
 
     // we sent Run == 0 so robot exits when done, server disconencts and we quit.
-    boost::this_thread::sleep( boost::posix_time::milliseconds(1000));
+    std::this_thread::sleep_for( std::chrono::milliseconds(1000) );
     cout << "Done, exiting." << endl;
     return 0;
 }
