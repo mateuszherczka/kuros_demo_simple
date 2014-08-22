@@ -10,7 +10,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
 
-#include <constants.hpp>
+#include <kuros_constants.hpp>
 #include <types.hpp>
 
 using std::string;
