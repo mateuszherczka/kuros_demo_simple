@@ -2,10 +2,10 @@
 1406534192 source:/home/mh/dev/kuros_demo_simple/main.cpp
 	<iostream>
 
-1406799184 source:/home/mh/dev/kuros_demo_simple/src/HandlingServer.cpp
+1408367058 source:/home/mh/dev/kuros_demo_simple/src/HandlingServer.cpp
 	"HandlingServer.hpp"
 
-1406799282 /home/mh/dev/kuros_demo_simple/include/HandlingServer.hpp
+1408367088 /home/mh/dev/kuros_demo_simple/include/HandlingServer.hpp
 	<kuros.h>
 
 1406795220 /home/mh/dev/kuros/include/kuros.h
@@ -14,7 +14,7 @@
 	<Server.hpp>
 	<BlockingServer.hpp>
 
-1406793856 /home/mh/dev/kuros/include/constants.hpp
+1407503171 /home/mh/dev/kuros/include/constants.hpp
 
 1406206812 /home/mh/dev/kuros/include/types.hpp
 	<vector>
@@ -78,14 +78,15 @@
 	<boost/asio.hpp>
 	<boost/lexical_cast.hpp>
 
-1407328048 source:/home/mh/dev/kuros_demo_simple/src/simple_main.cpp
+1408366958 source:/home/mh/dev/kuros_demo_simple/src/simple_main.cpp
 	<iostream>
 	<boost/format.hpp>
+	<boost/thread.hpp>
 	<kuros.h>
 	<HandlingServer.hpp>
 	<DataFile.hpp>
 
-1406536170 /home/mh/dev/kuros/include/DataFile.hpp
+1407396228 /home/mh/dev/kuros/include/DataFile.hpp
 	<iostream>
 	<string>
 	<fstream>
@@ -97,4 +98,77 @@
 
 1407396404 /home/mh/dev/kuros/include/BlockingServer.hpp
 	<Server.hpp>
+
+1406795220 /home/mh/dev/kuros03/include/kuros.h
+	<constants.hpp>
+	<types.hpp>
+	<Server.hpp>
+	<BlockingServer.hpp>
+
+1407503171 /home/mh/dev/kuros03/include/constants.hpp
+
+1406206812 /home/mh/dev/kuros03/include/types.hpp
+	<vector>
+	<iostream>
+
+1408351005 /home/mh/dev/kuros03/include/Server.hpp
+	<iostream>
+	<istream>
+	<ostream>
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/atomic.hpp>
+	<boost/thread/mutex.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<types.hpp>
+	<ThreadSafeQueue03.hpp>
+	<ServerConfig.hpp>
+	<KukaResponse.hpp>
+	<KukaCommand.hpp>
+
+1408351844 /home/mh/dev/kuros03/include/ThreadSafeQueue03.hpp
+	<queue>
+	<boost/thread/condition_variable.hpp>
+	<boost/thread/mutex.hpp>
+	<iostream>
+
+1408352115 /home/mh/dev/kuros03/include/ServerConfig.hpp
+	<XMLParser.hpp>
+
+1408351945 /home/mh/dev/kuros03/include/XMLParser.hpp
+	<boost/lexical_cast.hpp>
+	<boost/asio.hpp>
+	<tinyxml2.h>
+	<types.hpp>
+
+1408351474 /home/mh/dev/kuros03/include/KukaResponse.hpp
+	<vector>
+	<constants.hpp>
+	<XMLParser.hpp>
+	<boost/foreach.hpp>
+
+1408351208 /home/mh/dev/kuros03/include/KukaCommand.hpp
+	<types.hpp>
+	<constants.hpp>
+	<boost/asio.hpp>
+	<boost/lexical_cast.hpp>
+	<boost/foreach.hpp>
+
+1408352424 /home/mh/dev/kuros03/include/BlockingServer.hpp
+	<Server.hpp>
+
+1408367218 /home/mh/dev/kuros_demo_simple/include/DataFile.hpp
+	<iostream>
+	<string>
+	<fstream>
+	<math.h>
+	<boost/tokenizer.hpp>
+	<boost/lexical_cast.hpp>
+	<boost/foreach.hpp>
+	<constants.hpp>
+	<types.hpp>
+
+1408367205 source:/home/mh/dev/kuros_demo_simple/src/DataFile.cpp
+	"DataFile.hpp"
 

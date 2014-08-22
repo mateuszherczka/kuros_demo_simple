@@ -1,9 +1,12 @@
 #include <iostream>
 #include <boost/format.hpp>
+#include <boost/thread.hpp>
 
 #include <kuros.h>
 #include <HandlingServer.hpp>
 #include <DataFile.hpp>
+
+
 
 /*
 
@@ -35,6 +38,21 @@ method.
 
 */
 
+void printTrajectory(const trajectory_vec &trajectory)
+{
+    cout << "---------------------------------------------" << endl;
+    BOOST_FOREACH(const frame_vec &frame, trajectory)
+    {
+        BOOST_FOREACH(const double &val, frame)
+        {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+    cout << "---------------------------------------------" << endl;
+}
+
+
 int main()
 {
 
@@ -58,6 +76,12 @@ int main()
         cerr << "Failed loading trajectory, bailing out!" << endl;
         return 0;
     }
+
+    /*
+    Let's print the trajectory.
+    */
+    cout << "Loaded:" << endl;
+    printTrajectory(trajectory);
 
     // set parameters for trajectory
     info_vec info(KUKA_INFO_SIZE);  // info vectorwith the right size
@@ -89,7 +113,7 @@ int main()
     before sending, but here we just wait a little.
     */
     cout << "Waiting a little." << endl;
-    std::this_thread::sleep_for( std::chrono::milliseconds(1000) );
+    boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
 
     cout << "Sending trajectory with " << trajectory.size() << " frames." << endl;
 
@@ -144,11 +168,11 @@ int main()
     // idle
     while( aserver.isAccepting() ) {
 
-        std::this_thread::sleep_for( std::chrono::milliseconds(100) );   // idle
+        boost::this_thread::sleep(boost::posix_time::milliseconds(100));
     }
 
     // we sent Run == 0 so robot exits when done, server disconencts and we quit.
-    std::this_thread::sleep_for( std::chrono::milliseconds(1000) );
+    boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
     cout << "Done, exiting." << endl;
     return 0;
 }
